@@ -34,6 +34,21 @@ function startGame(event) {
 
 function renderGame(event) {
   event.preventDefault();
+  cardsElement.textContent = "Cards: " + sum;
+  for (let i = 0; i < cards.length; i++) {
+    cardsElement.textContent += cards[i] + " ";
+  }
+  sumElement.textContent = "Sum: " + sum;
+  if (sum <= 20) {
+    message = "Do you want to draw a new card?";
+  } else if (sum === 21) {
+    message = "You've got Blackjack!";
+    hasBlackJack = true;
+  } else {
+    message = "You're out of the game!";
+    isAlive = false;
+  }
+  messageElement.textContent = message;
 }
 
 let startGameButton = document.querySelector("#start-game");
